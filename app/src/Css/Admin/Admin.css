@@ -1,0 +1,143 @@
+.Admin:hover{
+    cursor: pointer;
+}
+
+.Admin-cont{
+    display:none;
+}
+
+.Admin-cont.show{
+    background-color:#A26943;
+    width:fit-content;
+    border-radius: 10px;
+    height:100%;
+    display:block;
+}
+
+@media screen and (min-width:995px) and (max-width:1200px){
+    .Admin-cont.show{
+        background-color:#A26943;
+        width:50%;
+        border-radius: 10px;
+        height:100%;
+        display:block;
+    }
+}
+
+.Admin-acc{
+    width:fit-content;
+    font-weight:400;
+}
+
+.admin-ac{
+    width:fit-content !important;
+}
+
+/*Upload Files*/
+
+
+/*Quantity*/
+.Quantity {
+    width:100%;
+    height: 2.75rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    border: 1px solid #fff;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    font-family:'Futura PT';
+    background:rgb(255 255 255 / 10%);
+    border-radius:10px;
+    outline:none;
+}
+
+.Quantity::placeholder{
+    margin-left:50%;
+    color: #fff;
+}
+
+.Quantity:hover{
+    border: 1px solid #A26943;
+}
+
+/*name and price*/
+.name-price{
+    width:100%;
+    height: 2.75rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    border: 1px solid #fff;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+    font-family:'Futura PT';
+    background:rgb(255 255 255 / 10%);
+    border-radius:10px;
+    outline:none;
+}
+
+.name-price::placeholder{
+    color: #fff;
+}
+
+.name-price:hover{
+    border: 1px solid #A26943;
+}
+
+/*file*/
+.file{
+    display:none;
+}
+
+.file-label{   
+    width:100%;
+    height: 2.75rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    border: 1px solid #fff;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.1rem;
+    font-family:'Futura PT';
+    background:rgb(255 255 255 / 10%);
+    border-radius:10px;
+    outline:none;
+}
+
+.file-label:hover {
+    border: 1px solid #A26943;
+}
+
+.file-upload{
+    width:100%;
+    height: 2.75rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    border: 1px solid #fff;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.1rem;
+    font-family:'Futura PT';
+    background:rgb(255 255 255 / 10%);
+    border-radius:10px;
+    outline:none;
+}
+
+.file-upload:hover{
+    border: 1px solid #A26943;
+}
+
+.upload-files{
+    display:none;
+}
+
+.upload-files.show{
+    background-color:#A26943;
+    width:fit-content;
+    border-radius: 10px;
+    height:100%;
+    display:block;
+}

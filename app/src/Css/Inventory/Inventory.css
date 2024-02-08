@@ -1,0 +1,43 @@
+.img-inventory{
+    height:300px;
+    max-width: 600px;
+}
+
+@media screen and (max-width:500px){
+    .let, .img-inventory{
+        height:auto;
+        max-width:99% !important;
+    }
+}
+
+.i-body{
+    padding-top:5%;
+}
+
+.btn-sold{
+    width:fit-content;
+    background-color:#A26943;
+    color:white;
+    border:1px solid #7b431d;
+    border-radius: 10px;
+}
+
+.inv-text{
+    font-size: 20px;
+    font-weight:300;
+    height:fit-content;
+}
+
+.inv-first-t{
+    font-size:25px;
+    font-weight:500;
+    margin-bottom:0;
+}
+
+#inv.show{
+    display:none;
+}
+
+.let.show{
+    display:none;
+}

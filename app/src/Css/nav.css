@@ -1,0 +1,141 @@
+/*header*/
+.logo-nav{
+    width:40%;
+    margin-left:5%;
+    margin-top:2%;
+}
+
+.Nav{
+    width:25%;
+    display:flex;
+    margin-top:2%;
+    margin-left:30%;
+    display:flex;
+    transition: background 2s;
+}
+
+
+    /*Nav media queries*/
+        @media screen and (min-width:1200px) and (max-width:1400px){
+            .Nav{
+                margin-left:20%;
+            }
+        }
+
+        @media screen and (min-width:992px) and (max-width:1200px){
+            .Nav{
+                margin-left:15%;
+            }
+        }
+
+        @media screen and (min-width:768px) and (max-width:992px){
+            .Nav{
+                margin-left:10%;
+            }
+        }
+
+
+.nav-link{
+    font-family:'Futura PT';
+    font-weight:lighter !important;
+    font-size: 18px !important;
+}
+
+.row{
+    width:99%;
+}
+
+/*Navbar-tog*/
+
+@media screen and (min-width:992px){
+    .navbar-tog{
+        display:none;
+    }
+}
+
+@media screen and (max-width:992px){
+    .navbar-tog{
+        display:inline;
+        height:40px;
+        margin-left:40%;
+        margin-top:04%;
+        cursor:pointer;
+    }
+
+    .Nav{
+        display:none;
+    }
+
+    .logo-nav{
+        margin-left:10%;
+        margin-top:3%;
+    }
+
+    .Nav.show{
+        display:flex;
+        width:100%;
+        margin-left:8%;
+    }
+}
+
+@media screen and (max-width:500px){
+    .logo-nav{
+        margin-left:15%;
+        margin-top:10%;
+    }
+
+    .navbar-tog{
+        display:inline;
+        height:40px;
+        margin-left:30%;
+        margin-top:12%;
+    }
+
+    .Nav.show{
+        margin-left:10%;
+        display:block;
+    }
+}
+
+@media screen and (max-width:300px){
+    .logo-nav{
+        margin-left:15%;
+        margin-top:10%;
+    }
+
+    .navbar-tog{
+        display:inline;
+        height:40px;
+        margin-left:20%;
+        margin-top:12%;
+    }
+}
+
+/*Nav-link Hover effect*/
+
+@media screen and (min-width:500px){
+    .nav-link {
+        position: relative;
+        height:35px;
+      }
+    
+    .nav-link::after{
+        margin-bottom:3%;
+        margin-left:15%;
+        content: '';
+        position: absolute;
+        width: 70%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff !important;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      
+      .nav-link:hover::after{
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+}

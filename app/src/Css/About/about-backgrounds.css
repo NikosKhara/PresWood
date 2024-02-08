@@ -1,0 +1,50 @@
+
+
+@media screen and (min-width:1200px){
+    .c{
+        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\carpenter-makes-pencil-marks-wood-plank.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 30vw;
+        /*<a href="https://www.freepik.com/free-photo/carpenter-makes-pencil-marks-wood-plank_21149769.htm#query=woodworking&position=8&from_view=search&track=sph&uuid=c345d431-1d7f-4cfc-b652-4ce52619b9b8">Image by fabrikasimf</a> on Freepik*/
+    }
+}
+
+@media screen and (max-width:1200px){
+    .c{
+        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\carpenter-makes-pencil-marks-wood-plank-2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 50vw;
+        padding:0;
+        /*<a href="https://www.freepik.com/free-photo/carpenter-makes-pencil-marks-wood-plank_21149769.htm#query=woodworking&position=8&from_view=search&track=sph&uuid=c345d431-1d7f-4cfc-b652-4ce52619b9b8">Image by fabrikasimf</a> on Freepik*/
+    }
+}
+
+@media screen and (max-width:500px){
+    .c{
+        height: 70vw !important;
+    }
+}
+
+@media screen and (max-width:400px){
+    .c{
+        height: 90vw !important;
+    }
+}
+
+@media screen and (max-width:300px){
+    .c{
+        height: 110vw !important;
+    }
+}
+
+.about-body{
+    background:#875838;
+    padding-bottom:1%;
+}
+
+.App{
+    padding:0;
+    height:50vw;
+}

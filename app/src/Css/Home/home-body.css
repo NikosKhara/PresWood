@@ -1,0 +1,137 @@
+
+/*body*/
+.body{
+    margin-top:13%;
+    height:300px;
+}
+
+/*adding margin so it doesn't get to high up*/
+@media screen and (max-width:1200px){
+    .body{
+        margin-top:15%;
+    }
+
+    .front-p-cont{
+        margin-top:20%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .body{
+        margin-top:25%;
+    }
+}
+
+@media screen and (max-width:500px){
+    .body{
+        margin-top:20%;
+    }
+}
+
+@media screen and (max-width:400px){
+    .body{
+        margin-top:20%;
+    }
+
+}
+
+
+
+.front-p{
+    color: #FFF;
+    font-family: Futura PT;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    margin-left:7%;
+}
+
+.side-p{
+    color: #FFF;
+    font-family: Futura PT;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transform:rotate(-90deg);
+    margin-left:50%;
+    margin-top:10%;
+    width:500px;
+}
+
+/*side-p media queries*/
+
+@media screen and (min-width:1200px) and (max-width:1400px){
+    .side-p{
+        margin-top:30% !important;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1200px){
+    .side-p{
+        margin-top:50% !important;
+    }
+}
+
+    /*transformed underneath front-p */
+    @media screen and (max-width:992px){
+        .side-p, .front-p{
+            transform:none;
+            margin-top:0px;
+            margin-bottom:0px;
+        }
+
+        .side-p{
+            margin-left:60%;
+            font-size:25px
+        }
+
+        .front-p{
+            font-size:60px;
+        }
+        
+    }
+
+    @media screen and (max-width:680px){
+
+        .side-p{
+            margin-left:80%;
+            font-size:20px;
+            width:400px;
+        }
+
+        .front-p{
+            font-size:50px;
+        }
+        
+    }
+
+    @media screen and (max-width:550px){
+
+        .side-p{
+            margin-left:80%;
+            font-size:15px;
+            width:350px;
+        }
+
+        .front-p{
+            font-size:40px;
+        }
+        
+    }
+
+    @media screen and (max-width:430px){
+
+        .side-p{
+            margin-left:80%;
+            font-size:15px;
+            width:250px;
+        }
+
+        .front-p{
+            font-size:30px;
+        }
+        
+    }
+

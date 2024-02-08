@@ -1,0 +1,121 @@
+/*Main Header*/
+.main-h{
+    font-size:50px;
+    width:fit-content;
+    margin-top:10%;
+}
+
+@media screen and (max-width:768px){
+    .main-header, .main-h{
+        display:none;
+    }
+}
+
+/*About*/
+.about-p-1, .about-p-2, .meet-the-owner-p{
+    font-size:18px;
+    font-weight:300;
+    width:320px;
+    line-height: 23.5px;
+}
+
+@media screen and (min-width:1200px) {
+    .about-p-hidden{
+        display:none;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .about-p-hidden{
+        display:block;
+        width:70%;
+        font-size:14px;
+    }
+
+    .about-p-1, .about-p-2{
+        display:none;
+    }
+
+    .main-header{
+        margin-top:8%;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .about-p-hidden{
+        display:block;
+        width:70%;
+        font-size:12px;
+    }
+
+}
+
+/*margin-left for the 2 paragraphs*/
+@media screen and (min-width:1200px){
+    .about-p-1, .meet-the-owner-p{
+        margin-left:48% !important;
+    }
+}
+
+.about{
+    padding-top:5%;
+}
+
+/*Meet The Owner*/
+.meet-the-owner-h, .meet-the-owner{
+    margin-top:4%;
+}
+
+.meet-the-owner-head{
+    font-size:50px;
+    width:fit-content;
+}
+
+@media screen and (min-width:1200px){
+    .meet-the-owner-p{
+        margin-top:25%;
+        width:332px;
+        line-height: 24.5px;
+    }
+}
+
+@media screen and (max-width:1200px){
+    .meet-the-owner-p{
+        display:none;
+    }
+}
+
+@media screen and (max-width:576px){
+    .meet-the-owner-head{
+        font-size:35px;
+    }
+}
+
+@media screen and (max-width:360px){
+    .meet-the-owner-head{
+        font-size:25px;
+    }
+}
+
+
+.meet-the-owner-img, .about-p-2{
+    margin-left:20%;
+}
+
+/*Image width*/
+.meet-the-owner-img{
+    width: 100%;
+}
+
+/*Margin for copyright*/
+.meet-the-owner{
+    margin-bottom:5%;
+}
+
+/*Copyright*/
+.copyright{
+    font-weight: 300;
+    width:fit-content;
+}
+
+
