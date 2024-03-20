@@ -12,10 +12,13 @@
 }
 
 /*About*/
+
+.about-p-1, .about-p-2{
+    width:360px;
+}
 .about-p-1, .about-p-2, .meet-the-owner-p{
     font-size:18px;
     font-weight:300;
-    width:320px;
     line-height: 23.5px;
 }
 
@@ -44,7 +47,7 @@
 @media screen and (max-width:576px) {
     .about-p-hidden{
         display:block;
-        width:70%;
+        width:100%;
         font-size:12px;
     }
 
@@ -73,8 +76,7 @@
 
 @media screen and (min-width:1200px){
     .meet-the-owner-p{
-        margin-top:25%;
-        width:332px;
+        width:457px;
         line-height: 24.5px;
     }
 }

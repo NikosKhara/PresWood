@@ -3,20 +3,41 @@ import '../Css/nav.css';
 import '../Css/Inventory/Inventory.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Vova from '../images/VOVA.png'
 import Admin from '../images/4216248-200-1.png'
 import NavImg from '../images/navbar-img.png'
 import React, { useState, useEffect } from 'react';
 
+
+
+
+import { initializeApp } from "firebase/app";
+import { query, collection, getFirestore, getDocs, doc, setDoc } from "firebase/firestore";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDcuGQwpfsbbsE8H1ro3jKXiPufyGJjrWU",
+    authDomain: "vovawood-9676c.firebaseapp.com",
+    projectId: "vovawood-9676c",
+    storageBucket: "vovawood-9676c.appspot.com",
+    messagingSenderId: "374261117560",
+    appId: "1:374261117560:web:3ea9ff54c94ece90dcb38d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
+
+
+
+
 function Inventory() {
 
         window.addEventListener('resize', () => {
+            const ad = document.getElementById('Admin-cont');
             let w = window.innerWidth;
-            let i = document.getElementById('i');
-
-            if(w < 1500){
+            if(w < 1500 && ad.classList.contains('show')){  
+                let i = document.getElementById('i');
                 i.classList.add('auto');
             }
+            
         })
 
         function handleClick(){
@@ -79,82 +100,107 @@ function Inventory() {
             // Any other actions you want to perform after adminAccess has been updated
           }, [adminAccess]);
 
-        const [items, setItems] = useState([]);
-        const [soldItems, setSoldItems] = useState([]);
 
-        const handleButtonClick = (item) => {
+
+
+
+
+        const [items, setItems] = useState([]);
+        useEffect( () => {
+
+            async function getallItems() {
+                const getItems = query(
+                    collection(db, 'items')
+                )
             
+                const querySnap = await getDocs(getItems);
+                const allDocs = querySnap.docs;
+                
+                setItems(allDocs)
+                console.log(allDocs)
+            }
+
+            getallItems()
+
+        }, [])
+
+        const handleButtonClick = async (item) => {
+            
+            const itemOfUse = doc(db, `items/${item.id}`);
+            const docData = {
+                isSold: true,
+            };
+
+            await setDoc(itemOfUse, docData, { merge: true });
+
+            
+
+
+            const updateditems = items.map((e) => {
+                if (e.id === item.id){
+                    e.isSold = true;
+                }
+                return e;
+            })
+            setItems(updateditems)
           };
 
-          useEffect(() => {
-            // Fetch uploaded items from the server
-            fetch('http://localhost:5000/soldUploadedItems')
-                .then(response => response.json())
-                .then(data => setSoldItems(data))
-                .catch(error => console.error('Error fetching uploaded items:', error));
-          }, []);
 
-          const renderSoldItems = (soldItem) => {
 
-            return(
-                <div className='col-xl-4 col-md-6 col-12 mx-auto let'>
-                    <div key={soldItem.fileName}>
-                        <div style={{width:'fit-content'}} className='mx-auto let' >
-                            <img src={`/uploads/${soldItem.fileName}`} alt={soldItem.fileName} className='img-inventory' />
+          const renderSoldItems = (item) => {
+
+            if(item.get('isSold') === true){
+                return(
+                    <div className='col-xl-4 col-md-6 col-12 mx-auto let'>
+                        <div key={item.get('file')}>
+                            <div style={{width:'fit-content'}} className='mx-auto let' >
+                                <img src={item.get('file')} alt={item.get('namePrice')} className='img-inventory' />
+                            </div>
+                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.get('namePrice')}</p>
+                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: <b style={{color:'black'}}>SOLD</b></p>   
+                            {adminAccess && (
+                                <div style={{width:'fit-content'}} className='mx-auto let' >
+                                    <button className='btn-sold mx-auto' onClick={() => handleButtonClick(item)} >Move To Sold</button>
+                                </div>  
+                            )}
                         </div>
-                        <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{soldItem.namePrice}</p>
-                        <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {soldItem.quantity}</p>   
-                    </div>
-                </div>      
-            )} 
-          
-
-          useEffect(() => {
-            // Fetch uploaded items from the server
-            fetch('http://localhost:5500/uploadedItems')
-                .then(response => response.json())
-                .then(data => setItems(data))
-                .catch(error => console.error('Error fetching uploaded items:', error));
-          }, []);
+                    </div>      
+                )
+            }
+        } 
 
         const renderListDining = (item) => {
-
-            if (item.typeOfFile === 'Dining Table'){
+            if (item.get('typeOfItem') === 'Dining Table' && item.get('isSold') === false){
                 return(
-                    <div className='col-xl-4 col-md-6 col-12 mx-auto'>
-                        <form onSubmit={handleButtonClick} encType="multipart/form-data">
-                            <div key={item.fileName}>
-                                <div style={{width:'fit-content'}} className='mx-auto let' >
-                                    <img src={`/uploads/${item.fileName}`} alt={item.fileName} name='myFile' className='img-inventory' />
-                                </div>
-                                <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}} name='namePrice'>{item.namePrice}</p>
-                                <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}} name='quantity'>Quantity: {item.quantity}</p>   
-                                {/* Conditionally render the button based on adminAccess */}
-                                {adminAccess && (
-                                    <div style={{width:'fit-content'}} className='mx-auto let' >
-                                        <button className='btn-sold mx-auto' type='submit'>Move To Sold</button>
-                                    </div>  
-                                )}
+                    <div className='col-xl-4 col-md-6 col-sm-8 col-12 mx-auto let'>
+                        <div key={item.get('file')}>
+                            <div style={{width:'fit-content'}} className='mx-auto let' >
+                                <img src={item.get('file')} alt={item.get('namePrice')} className='img-inventory' />
                             </div>
-                        </form>
+                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.get('namePrice')}</p>
+                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.get('quantity')}</p>   
+                            {adminAccess && (
+                                <div style={{width:'fit-content'}} className='mx-auto let' >
+                                    <button className='btn-sold mx-auto' onClick={() => handleButtonClick(item)} >Move To Sold</button>
+                                </div>  
+                            )}
+                        </div>
                     </div>      
                 )
             }
             
-        }
+        } 
 
         const renderListCoffee = (item) => {
-
-            if (item.typeOfFile === 'Coffee Table'){
+            if (item.get('typeOfItem') === 'Coffee Table' && item.get('isSold') === false){
                 return(
                     <div className='col-xl-4 col-md-6 col-12 mx-auto let'>
-                        <div key={item.fileName}>
+                        <div key={item.get('file')}>
                             <div style={{width:'fit-content'}} className='mx-auto let' >
-                                <img src={`/uploads/${item.fileName}`} alt={item.fileName} className='img-inventory' />
+                                <img src={item.get('file')} alt={item.get('namePrice')} className='img-inventory' />
                             </div>
-                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.namePrice}</p>
-                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.quantity}</p>   
-                            {/* Conditionally render the button based on adminAccess */}
+                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.get('namePrice')}</p>
+                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.get('quantity')}</p>   
                             {adminAccess && (
                                 <div style={{width:'fit-content'}} className='mx-auto let' >
                                     <button className='btn-sold mx-auto' onClick={() => handleButtonClick(item)} >Move To Sold</button>
@@ -170,16 +216,15 @@ function Inventory() {
 
         const renderListCutting = (item) => {
 
-            if (item.typeOfFile === 'Cutting Board'){
+            if (item.get('typeOfItem') === 'Cutting Board' && item.get('isSold') === false){
                 return(
                     <div className='col-xl-4 col-md-6 col-12 mx-auto let'>
-                        <div key={item.fileName}>
+                        <div key={item.get('file')}>
                             <div style={{width:'fit-content'}} className='mx-auto let' >
-                                <img src={`/uploads/${item.fileName}`} alt={item.fileName} className='img-inventory' />
+                                <img src={item.get('file')} alt={item.get('fileName')} className='img-inventory' />
                             </div>
-                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.namePrice}</p>
-                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.quantity}</p>   
-                            {/* Conditionally render the button based on adminAccess */}
+                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.get('namePrice')}</p>
+                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.get('quantity')}</p>   
                             {adminAccess && (
                                 <div style={{width:'fit-content'}} className='mx-auto let' >
                                     <button className='btn-sold mx-auto' onClick={() => handleButtonClick(item)} >Move To Sold</button>
@@ -195,21 +240,15 @@ function Inventory() {
 
         const renderListSlab = (item) => {
 
-            if (item.typeOfFile === 'Slab'){
+            if (item.get('typeOfItem') === 'Slab' && item.get('isSold') === false){
                 return(
                     <div className='col-xl-4 col-md-6 col-12 mx-auto let'>
-                        <div key={item.fileName}>
+                        <div key={item.get('file')}>
                             <div style={{width:'fit-content'}} className='mx-auto let' >
-                                <img src={`/uploads/${item.fileName}`} alt={item.fileName} className='img-inventory' />
+                                <img src={item.get('file')} alt={item.get('namePrice')} className='img-inventory' />
                             </div>
-                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.namePrice}</p>
-                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.quantity}</p>   
-                            {/* Conditionally render the button based on adminAccess */}
-                            {adminAccess && (
-                                <div style={{width:'fit-content'}} className='mx-auto let' >
-                                    <button className='btn-sold mx-auto' onClick={() => handleButtonClick(item)} >Move To Sold</button>
-                                </div>  
-                            )}
+                            <p className='text-white mx-auto inv-text inv-first-t let' style={{width:'fit-content'}}>{item.get('namePrice')}</p>
+                            <p className='text-white mx-auto inv-text let' style={{width:'fit-content'}}>Quantity: {item.get('quantity')}</p>   
                         </div>
                     </div>      
                 )
@@ -226,7 +265,7 @@ function Inventory() {
                         <div className="container nav">              
                             <div className="logo-nav">     
                                 <a href="./Home" className="logo1">
-                                    <img className="logo" src={Vova} alt='logo' />
+                                    <h4 className='text-white'>Slabmen</h4>
                                 </a>   
                             </div> 
                             <img src={NavImg} alt='nav-img' className='navbar-tog' id='navbar-tog' onClick={handleClick} />  
@@ -296,19 +335,19 @@ function Inventory() {
                                 
                             </div>
                         </div>
-                    <div className='upload-files mx-auto' id='upload-files'>
+                        <div className='upload-files mx-auto' id='upload-files'>
                         <div className='col-12 mx-auto'>
-                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" id='uploadItem' >
+                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" id='uploadItem'>
                                 <div className='col-md-7 col-11 mx-auto'>
                                     <div className='row'>
                                         <div className='col-100'>
-                                            <input type='number' placeholder='Quantity' name='quantity' className='Quantity text-white'  />
+                                            <input type='text' placeholder='Quantity' name='quantity' className='Quantity text-white' id='quantity'  />
                                         </div>
                                         <div className='col-100'>
-                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white'  />
+                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white' id='namePrice'  />
                                         </div>
                                         <div className='col-100'>
-                                            <input type="file" name="myFile" className='file text-white' id='file' />
+                                            <input type="file" className="input file text-white" name='myFile' id='file' />
                                             <label htmlFor='file' className='file-label text-white'>Select Image</label>
                                         </div>
                                         <div className='col-100'>
@@ -320,12 +359,11 @@ function Inventory() {
                                             </select>
                                         </div>
                                         <div className='col-100'>
-                                            <button type="submit" className='file-upload' >Upload</button> 
+                                            <button type="submit" className='file-upload' value={"Upload File"}>Upload</button> 
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                            
                         </div>
                     </div>                
                 <div className='row' id='inv'>     
@@ -346,37 +384,40 @@ function Inventory() {
                 
                 <div className='row mx-auto'>  
                     <div className='row'>
-                        <h4 className='mx-auto text-white' style={{width:'fit-content'}}>Dining Tables</h4>
+                        <h4 className='mx-auto' style={{width:'fit-content', color:'#dcc28b'}}>Dining Tables</h4>
                     </div>
                     {items.map(renderListDining)}
                 </div>
                 <div className='row mx-auto' style={{marginTop:2 + '%'}}>  
                     <div className='row'>
-                        <h4 className='mx-auto text-white' style={{width:'fit-content'}}>Coffee Tables</h4>
+                        <h4 className='mx-auto' style={{width:'fit-content', color:'#dcc28b'}}>Coffee Tables</h4>
                     </div>
                     {items.map(renderListCoffee)}
                 </div>
                 <div className='row mx-auto' style={{marginTop:2 + '%'}}>  
                     <div className='row'>
-                        <h4 className='mx-auto text-white' style={{width:'fit-content'}}>Cutting Boards</h4>
+                        <h4 className='mx-auto' style={{width:'fit-content', color:'#dcc28b'}}>Cutting Boards</h4>
                     </div>
                     {items.map(renderListCutting)}
                 </div>
                 <div className='row mx-auto' style={{marginTop:2 + '%'}}>  
                     <div className='row'>
-                        <h4 className='mx-auto text-white' style={{width:'fit-content'}}>Slabs</h4>
+                        <h4 className='mx-auto' style={{width:'fit-content', color:'#dcc28b'}}>Slabs</h4>
                     </div>
                     {items.map(renderListSlab)}
-                </div>
+            </div>
             </div>
             <div className='Sold'>
                 <div className='row mx-auto'>
-                    <div className='col-12'>
-                        <h1 className='text-white mx-auto' style={{width:'fit-content'}}>Sold items</h1>
+                    <div className='row'>
+                        <div className='col-12'>
+                            <h1 className='mx-auto text-white' style={{width:'fit-content'}}>Sold items</h1>
+                        </div>
                     </div>
+                    {items.map(renderSoldItems)}
                 </div>  
-                {soldItems.map(renderSoldItems)}
-            </div>
+                
+        </div>
             
         </div>
     </div>

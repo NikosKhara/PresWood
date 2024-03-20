@@ -14,6 +14,14 @@
     transition: background 2s;
 }
 
+.slab{
+    text-decoration: none !important;
+}
+
+.logo1{
+    text-decoration: none;
+}
+
 
     /*Nav media queries*/
         @media screen and (min-width:1200px) and (max-width:1400px){

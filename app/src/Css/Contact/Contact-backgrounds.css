@@ -1,6 +1,6 @@
 @media screen and (min-width:1470px){
     .d{
-        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\pexels-thijs-van-der-weide-1094767 1.png');
+        background: url('/public/images/pexels-thijs-van-der-weide-1094767 1.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 30vw;
@@ -9,7 +9,7 @@
 
 @media screen and (max-width:1470px){
     .d{
-        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\pexels-thijs-van-der-weide-1094767 1.png');
+        background: url('/public/images/pexels-thijs-van-der-weide-1094767 1.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 40vw;
@@ -19,7 +19,7 @@
 
 @media screen and (max-width:1200px){
     .d{
-        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\pexels-thijs-van-der-weide-1094767 1-2.png');
+        background: url('/public/images/pexels-thijs-van-der-weide-1094767 1-2.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 50vw;

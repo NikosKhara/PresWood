@@ -4,7 +4,6 @@ import '../Css/About/about.css';
 import '../Css/Admin/Admin.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Vova from '../images/VOVA.png'
 import Admin from '../images/4216248-200-1.png'
 import NavImg from '../images/navbar-img.png'
 import meetTheOwner from '../images/356392192_1032486871131406_1303385691663870325_n-1.png'
@@ -69,7 +68,7 @@ function About() {
                         <div className="container nav">              
                             <div className="logo-nav">     
                                 <a href="./Home" className="logo1">
-                                    <img className="logo" src={Vova} alt='logo' />
+                                    <h4 className='text-white'>Slabmen</h4>
                                 </a>   
                             </div> 
                             <img src={NavImg} alt='nav-img' className='navbar-tog' id='navbar-tog' onClick={handleClick} />  
@@ -149,53 +148,60 @@ function About() {
                     </div>
                     <div className='upload-files mx-auto' id='upload-files'>
                         <div className='col-12 mx-auto'>
-                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" >
+                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" id='uploadItem'>
                                 <div className='col-md-7 col-11 mx-auto'>
                                     <div className='row'>
                                         <div className='col-100'>
-                                            <input type='number' placeholder='Quantity' name='quantity' className='Quantity text-white'  />
+                                            <input type='text' placeholder='Quantity' name='quantity' className='Quantity text-white' id='quantity'  />
                                         </div>
                                         <div className='col-100'>
-                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white'  />
+                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white' id='namePrice'  />
                                         </div>
                                         <div className='col-100'>
-                                            <input type="file" name="myFile" className='file text-white' id='file' />
+                                            <input type="file" className="input file text-white" name='myFile' id='file' />
                                             <label htmlFor='file' className='file-label text-white'>Select Image</label>
                                         </div>
                                         <div className='col-100'>
-                                            <button type="submit" className='file-upload' >Upload</button> 
+                                            <select name='typeOfItem' id='typeOfItem' className='Quantity text-white' form='uploadItem' required>
+                                                <option value={'Dining Table'} className='text-black'>Dining Table</option>
+                                                <option value={'Coffee Table'} className='text-black'>Coffee Table</option>
+                                                <option value={'Cutting Board'} className='text-black'>Cutting Board</option>
+                                                <option value={'Slab'} className='text-black'>Slab</option>
+                                            </select>
+                                        </div>
+                                        <div className='col-100'>
+                                            <button type="submit" className='file-upload' value={"Upload File"}>Upload</button> 
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                            
                         </div>
                     </div> 
-            <div className='row about'>
+            <div className='row about mx-auto'>
                 <div className='col-xl-4 col-lg-0'>
                     <p className='about-p-1 text-white'>
-                        <b>Vova Woodworking</b> offers the best price along with the cleanest work 
-                        in the Statham area. With the ability to do tables, chairs, and drawers, 
-                        we can fulfil all your woodworking needs. We’re continually enhancing out 
-                        proccess to always provide our customers with the best products.
+                    Slabmen Design, located in Northeast Georgia is an idea that became a desire. A desire that  slowly became a reality.
+                    The idea stemmed from an ability to not only work with your hands but enjoying the aspect of grabbing rough lumber and 
+                    creating conversation starters in humble abodes.. The desire is rooted in wanting a home-based business that will finically 
+                    meet obligations to support an ever growing family.. The reality is the products listed for your viewing and purchasing pleasure.
                     </p>
                 </div>
-                <div className='col-xl-3 col-lg-12'>
-                    <p className='about-p-hidden text-white mx-auto'>
-                        <b>Founded in 2023</b> Vova Woodworking is a privately owned, local business. 
-                        We have already established a solid reputation in the area as a company 
-                        that you can trust to deliver high quality and sustainable products that 
-                        will last for generations. We also offers the best price along with the cleanest work 
-                        in the Statham area. We’re continually enhancing out 
-                        proccess to always provide our customers with the best products.
+                <div className='col-xl-1 col-xxl-1 col-lg-12 mx-auto'>
+                    <p className='about-p-hidden text-white mx-sm-auto'>
+                    Slabmen Design, located in Northeast Georgia is an idea that became a desire. A desire that  slowly became a reality.
+                    The idea stemmed from an ability to not only work with your hands but enjoying the aspect of grabbing rough lumber and 
+                    creating conversation starters in humble abodes.. The desire is rooted in wanting a home-based business that will finically 
+                    meet obligations to support an ever growing family.. The reality is the products listed for your viewing and purchasing pleasure.
+                    Since 2022, I have been chainsaw milling my own lumber. This process even though time consuming and difficult has yielded another s
+                    atisfaction on seeing a downed tree at the end of its life span be resurrected for generations more.
+                    Thank you again for joining us on this family endeavor and contributing to the success of locally owned and handmade.
                     </p>
                 </div>
-                <div className='col-xl-4 col-lg-0'>
+                <div className='col-xl-6 col-lg-0'>
                     <p className='about-p-2 text-white'>
-                        <b>Founded in 2023</b> Vova Woodworking is a privately owned, local business. 
-                        We have already established a solid reputation in the area as a company 
-                        that you can trust to deliver high quality and sustainable products that 
-                        will last for generations.
+                    Since 2022, I have been chainsaw milling my own lumber. This process even though time consuming and difficult has 
+                    yielded another satisfaction on seeing a downed tree at the end of its life span be resurrected for generations more.
+                    Thank you again for joining us on this family endeavor and contributing to the success of locally owned and handmade.
                     </p>
                 </div>
             </div>
@@ -209,14 +215,19 @@ function About() {
             <div className='row meet-the-owner'>
                 <div className='col-xl-4 col-lg-12'>
                     <p className='meet-the-owner-p text-white mx-lg-auto'>
-                        <b>Vladimir Kharabora</b> has been woodworking for over 10 years in which he perfected 
-                        the creation of coffee tables, large dining room tables, outdoor chairs, and cabinets. 
-                        In 2023 he finally decided to start his own business. He has been selling his products 
-                        locally for over 3 years to many people in the area who can vouch for his ability's. 
-                        Vlademir is also a family man who has been married for 5 years and has 2 kids.
+                        My name is Vlad, it is an honor to have you along for this journey. In 2019 this endeavor began with my beautiful 
+                        wife Agnessa asking for us to purchase or if I can build a coffee table to supplement our new couch. With some basic 
+                        hand tools and a lot of emotional support a simple coffee table was built that drew attention from family and visitors. 
+                        An attached garage became filled with sawdust more and more as requests by the better half for a kitchen island, barn door 
+                        entertainment center, dining table, cutting boards and end pieces started filing in. The learning experience along with 
+                        imagination started bubbling even more as toddler sons would want to spend hours in the garage with dad.
+                        With Covid upon us and lumber prices rising another opportunity was presented for limited weekend time. Since 2022, I have 
+                        been chainsaw milling my own lumber. This process even though time consuming and difficult has yielded another satisfaction 
+                        on seeing a downed tree at the end of its life span be resurrected for generations more.
+                        Thank you again for joining us on this family endeavor and contributing to the success of locally owned and handmade.
                     </p>
                 </div>
-                <div className='col-xl-2 col-lg-0'></div>
+                <div className='col-xl-4 col-xxl-2 col-lg-0'></div>
                 <div className='col-xl-4 col-lg-6 col-md-7 col-10 mx-xl-0 mx-auto'>
                     <img src={meetTheOwner} alt='Meet The Owner' className='meet-the-owner-img mx-auto' />
                 </div>

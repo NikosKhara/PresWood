@@ -2,7 +2,7 @@
 
 @media screen and (min-width:1200px){
     .c{
-        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\carpenter-makes-pencil-marks-wood-plank.png');
+        background: url('/public/images/carpenter-makes-pencil-marks-wood-plank.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 30vw;
@@ -12,7 +12,7 @@
 
 @media screen and (max-width:1200px){
     .c{
-        background: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\carpenter-makes-pencil-marks-wood-plank-2.png');
+        background: url('/public/images/carpenter-makes-pencil-marks-wood-plank-2.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 50vw;

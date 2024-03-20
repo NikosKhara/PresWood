@@ -1,0 +1,78 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "async_hooks": "^1.0.0",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.2",
+    "cookie-signature": "^1.2.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "destroy": "^1.2.0",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.3",
+    "firebase": "^10.9.0",
+    "firestore": "^1.1.6",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "inherits": "^2.0.4",
+    "lib": "^5.1.0",
+    "multer": "^1.4.5-lts.1",
+    "node": "^21.7.1",
+    "nodemailer": "^6.9.8",
+    "path": "^0.12.7",
+    "querystring": "^0.2.1",
+    "querystring-es3": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
+    "stream": "^0.0.2",
+    "util": "^0.12.5",
+    "web-vitals": "^2.1.4",
+    "zlib": "^1.0.5"
+  },
+   
+  "scripts": { 
+    "start": "react-app-rewired start", 
+    "build": "react-app-rewired build", 
+    "test": "react-app-rewired test", 
+    "eject": "react-scripts eject" 
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3"
+  }
+}

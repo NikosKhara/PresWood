@@ -3,7 +3,6 @@ import '../Css/nav.css';
 import '../Css/Contact/Contact.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Vova from '../images/VOVA.png'
 import Admin from '../images/4216248-200-1.png'
 import NavImg from '../images/navbar-img.png'
 
@@ -58,6 +57,10 @@ function Contact() {
             });
         }
 
+        function addHR(){
+            return (<hr></hr>)
+        }
+
   return (
     <div className="App container-fluid">
         <div className='container-fluid header-body d'>
@@ -67,7 +70,7 @@ function Contact() {
                         <div className="container nav">              
                             <div className="logo-nav">     
                                 <a href="./Home" className="logo1">
-                                    <img className="logo" src={Vova} alt='logo' />
+                                    <h4 className='text-white'>Slabmen</h4>
                                 </a>   
                             </div> 
                             <img src={NavImg} alt='nav-img' className='navbar-tog' id='navbar-tog' onClick={handleClick} />  
@@ -97,7 +100,7 @@ function Contact() {
                     </div>
                 </header>
             </div>
-            <div className='container-fluid main-head'>
+            <div className='container-fluid main-header'>
                 <div className='row'>
                     <div className='col-xxl-12'>
                         <p className='text-white main-h-contact mx-auto' style={{fontFamily:'Futura PT'}}>CONTACT</p>
@@ -106,7 +109,7 @@ function Contact() {
             </div> 
         </div>
         <div className='contact-body container-fluid'>
-            <div className='Admin-cont mx-auto' id='Admin-cont'>
+            <div className='Admin-cont mx-auto for-contact' id='Admin-cont'>
                 <div className='col-12 mx-auto'>
                         <form className='form-Admin mx-auto'>
                             <div className='col-md-7 col-11 mx-auto'>
@@ -142,33 +145,41 @@ function Contact() {
                                 </div>
                             </div>
                         </form>
-                        
+                        {addHR()}
                     </div>
                 </div>
                 <div className='upload-files mx-auto' id='upload-files'>
-                    <div className='col-12 mx-auto'>
-                        <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" >
-                            <div className='col-md-7 col-11 mx-auto'>
-                                <div className='row'>
-                                    <div className='col-100'>
-                                        <input type='number' placeholder='Quantity' name='quantity' className='Quantity text-white'  />
-                                    </div>
-                                    <div className='col-100'>
-                                        <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white'  />
-                                    </div>
-                                    <div className='col-100'>
-                                        <input type="file" name="myFile" className='file text-white' id='file' />
-                                        <label htmlFor='file' className='file-label text-white'>Select Image</label>
-                                    </div>
-                                    <div className='col-100'>
-                                        <button type="submit" className='file-upload' >Upload</button> 
+                        <div className='col-12 mx-auto'>
+                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" id='uploadItem'>
+                                <div className='col-md-7 col-11 mx-auto'>
+                                    <div className='row'>
+                                        <div className='col-100'>
+                                            <input type='text' placeholder='Quantity' name='quantity' className='Quantity text-white' id='quantity'  />
+                                        </div>
+                                        <div className='col-100'>
+                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white' id='namePrice'  />
+                                        </div>
+                                        <div className='col-100'>
+                                            <input type="file" className="input file text-white" name='myFile' id='file' />
+                                            <label htmlFor='file' className='file-label text-white'>Select Image</label>
+                                        </div>
+                                        <div className='col-100'>
+                                            <select name='typeOfItem' id='typeOfItem' className='Quantity text-white' form='uploadItem' required>
+                                                <option value={'Dining Table'} className='text-black'>Dining Table</option>
+                                                <option value={'Coffee Table'} className='text-black'>Coffee Table</option>
+                                                <option value={'Cutting Board'} className='text-black'>Cutting Board</option>
+                                                <option value={'Slab'} className='text-black'>Slab</option>
+                                            </select>
+                                        </div>
+                                        <div className='col-100'>
+                                            <button type="submit" className='file-upload' value={"Upload File"}>Upload</button> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                        
-                    </div>
-                </div> 
+                            </form>
+                        </div>
+                        {addHR()}
+                    </div> 
                 <div className="form-wrapper">
                     <form className="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" style={{paddingBottom:3 + '%', paddingTop:2 + '%'}} >
                         <input type="hidden" name="access_key" value="b5a41486-2b32-4e9b-95c4-b0a0e6be0c3a" />
@@ -250,7 +261,7 @@ function Contact() {
                     <div className='row'>
                         <div className='col-lg-8 col-0 mx-auto hidden-c'>
                             <p className='text-white hidden-contact mx-auto'>For inquiries about custom items and how we can work with you on your next project, 
-                            please fill in the form above or email at: vova@vovawood.com</p>
+                            please fill in the form above or email at: vladimir.kharabora@gmail.com</p>
                         </div>   
                     </div>
                     <div className='row'>

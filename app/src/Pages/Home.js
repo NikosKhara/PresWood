@@ -4,12 +4,57 @@ import '../Css/Admin/Admin.css';
 import '../Css/Home/home-body.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Vova from '../images/VOVA.png'
 import Admin from '../images/4216248-200-1.png'
 import NavImg from '../images/navbar-img.png'
-import React from 'react'
+import { React } from 'react'
+
+
+
+// Import the functions you need from the SDKs you need
+
+//for creating a new collection with a random gen name
+/*const orderscollection = collection(firestore, 'orders');
+async function addNew(){
+    const newDoc = await addDoc(orderscollection, {
+        customer: 'Arther',
+        drink: 'Latte',
+        total_cost: (100 + Math.floor(Math.random() * 400)) / 100
+    })
+}
+addNew()*/
+
+//For fetching
+/*async function read() {
+    const mySnapshot = await getDoc(itemOfUse);
+    if(mySnapshot.exists()){
+        const docData = mySnapshot.data();
+        console.log(`My data is ${JSON.stringify(docData)}`)
+    }
+}
+read()*/
+
+//For fetching multiple items
+
+/*async function queryForDocuments() {
+    const customerOrdersQuery = query(
+        collection(firestore, 'dailySpecial')
+    )
+
+    const querySnap = await getDocs(customerOrdersQuery);
+    const allDocs = querySnap.forEach((snap) => {
+        console.log(`doc ${snap.id} contains ${JSON.stringify(snap.data())}`)
+    });
+}
+queryForDocuments()*/
+
+
+
+
 
 function Home() {
+    
+
+
 
         function handleClick(){
             const nav = document.getElementById('Nav');
@@ -67,7 +112,7 @@ function Home() {
                 <div className="container nav">              
                     <div className="logo-nav">     
                         <a href="./Home" className="logo1">
-                            <img className="logo" src={Vova} alt='logo' />
+                            <h4 className='text-white'>Slabmen</h4>
                         </a>   
                     </div> 
                     <img src={NavImg} alt='nav-img' className='navbar-tog' id='navbar-tog' onClick={handleClick} />  
@@ -100,7 +145,7 @@ function Home() {
             <div className='row front-h'>
                 <div className='col-xxl-7 col-xl-6 col-lg-6 col-sm-12 col-12'>
                     <div className='front-p-cont'>
-                        <p className='front-p'>VOVA<br />WOODWORKING</p>
+                        <p className='front-p'>Slabmen Design</p>
                     </div>
                 </div>
                 
@@ -150,30 +195,38 @@ function Home() {
                     </div>
                 </div>
                 <div className='upload-files mx-auto' id='upload-files'>
-                    <div className='col-12 mx-auto'>
-                        <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" >
-                            <div className='col-md-7 col-11 mx-auto'>
-                                <div className='row'>
-                                    <div className='col-100'>
-                                        <input type='number' placeholder='Quantity' name='quantity' className='Quantity text-white'  />
-                                    </div>
-                                    <div className='col-100'>
-                                        <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white'  />
-                                    </div>
-                                    <div className='col-100'>
-                                        <input type="file" name="myFile" className='file text-white' id='file' />
-                                        <label htmlFor='file' className='file-label text-white'>Select Image</label>
-                                    </div>
-                                    <div className='col-100'>
-                                        <button type="submit" className='file-upload' >Upload</button> 
+                        <div className='col-12 mx-auto'>
+                            <form action="http://localhost:5500/upload" method="post" encType="multipart/form-data" id='uploadItem'>
+                                <div className='col-md-7 col-11 mx-auto'>
+                                    <div className='row'>
+                                        <div className='col-100'>
+                                            <input type='text' placeholder='Quantity' name='quantity' className='Quantity text-white' id='quantity'  />
+                                        </div>
+                                        <div className='col-100'>
+                                            <input type='text' placeholder='Ex: Oak Table - $60' name='namePrice' className='name-price text-white' id='namePrice'  />
+                                        </div>
+                                        <div className='col-100'>
+                                            <input type="file" className="input file text-white" name='myFile' id='file' />
+                                            <label htmlFor='file' className='file-label text-white'>Select Image</label>
+                                        </div>
+                                        <div className='col-100'>
+                                            <select name='typeOfItem' id='typeOfItem' className='Quantity text-white' form='uploadItem' required>
+                                                <option value={'Dining Table'} className='text-black'>Dining Table</option>
+                                                <option value={'Coffee Table'} className='text-black'>Coffee Table</option>
+                                                <option value={'Cutting Board'} className='text-black'>Cutting Board</option>
+                                                <option value={'Slab'} className='text-black'>Slab</option>
+                                            </select>
+                                        </div>
+                                        <div className='col-100'>
+                                            <button type="submit" className='file-upload' value={"Upload File"}>Upload</button> 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                        
-                    </div>
-                </div>
+                            </form>
+                        </div>
+                    </div> 
         </div>
+
     </div>
   );
 }

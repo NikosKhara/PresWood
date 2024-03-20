@@ -2,7 +2,7 @@
 
 @media screen and (min-width:1200px){
     body{
-        background-image: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\wood-working-2385634-1.png');
+        background-image: url('/public/images/wood-working-2385634-1.png');
         background-size: cover;
         background-repeat: no-repeat;
         height:auto
@@ -11,7 +11,7 @@
 
 @media screen and (max-width:1200px){
     body{
-        background-image: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\wood-working-2385634-2.png');
+        background-image: url('/public/images/wood-working-2385634-2.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: auto
@@ -20,7 +20,7 @@
 
 @media screen and (max-width:700px){
     body{
-        background-image: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\wood-working-2385634-3.png');
+        background-image: url('/public/images/wood-working-2385634-3.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: auto
@@ -29,7 +29,7 @@
 
 @media screen and (max-width:300px){
     body{
-        background-image: url('C:\Users\nikos\OneDrive\Documents\Vova Woodworking\app\src\images\wood-working-2385634-3.png');
+        background-image: url('/public/images/wood-working-2385634-3.png');
         background-size: cover;
         background-repeat: no-repeat;
         height: 300vw

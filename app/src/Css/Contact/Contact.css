@@ -75,3 +75,15 @@
     margin-bottom:2%;
   }
 }
+
+@media screen and (max-width:1000px){
+  .for-contact{
+    margin-bottom:5%;
+  }
+}
+
+@media screen and (max-width:600px){
+  .for-contact{
+    margin-bottom:15%;
+  }
+}

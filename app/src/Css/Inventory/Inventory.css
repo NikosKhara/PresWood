@@ -1,10 +1,17 @@
-.img-inventory{
+/*.img-inventory{
     height:300px;
     max-width: 600px;
-}
+}*/
+
+    .img-inventory{
+        max-width:99%;
+        height:90%;
+    }
+    
+
 
 @media screen and (max-width:500px){
-    .let, .img-inventory{
+    .let{
         height:auto;
         max-width:99% !important;
     }
