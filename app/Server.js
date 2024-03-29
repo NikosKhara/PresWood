@@ -39,13 +39,15 @@ app.use((req, res, next) => {
 
 //for firestore database
 const firebaseApp = initializeApp ({
-  apiKey: "AIzaSyDcuGQwpfsbbsE8H1ro3jKXiPufyGJjrWU",
-  authDomain: "vovawood-9676c.firebaseapp.com",
-  projectId: "vovawood-9676c",
-  storageBucket: "vovawood-9676c.appspot.com",
-  messagingSenderId: "374261117560",
-  appId: "1:374261117560:web:3ea9ff54c94ece90dcb38d"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJ_ID || 'vovawood-9676c',
+  storageBucket: 'vovawood-9676c.appspot.com',
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 });
+
+console.log(process.env.REACT_APP_STORAG_BUCKET + '   475')
 
 const firestore = getFirestore();
 const storage = getStorage();

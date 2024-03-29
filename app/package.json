@@ -11,11 +11,14 @@
     "async_hooks": "^1.0.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
+    "buffer": "^6.0.3",
     "cookie-signature": "^1.2.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
     "destroy": "^1.2.0",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.5",
+    "env": "^0.0.2",
     "express": "^4.18.3",
     "firebase": "^10.9.0",
     "firestore": "^1.1.6",
@@ -34,16 +37,18 @@
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1",
     "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4",
     "zlib": "^1.0.5"
   },
-   
-  "scripts": { 
-    "start": "react-app-rewired start", 
-    "build": "react-app-rewired build", 
-    "test": "react-app-rewired test", 
-    "eject": "react-scripts eject" 
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -62,17 +67,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "assert": "^2.1.0",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.0",
-    "https-browserify": "^1.0.0",
-    "os-browserify": "^0.3.0",
-    "process": "^0.11.10",
-    "react-app-rewired": "^2.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.3"
   }
 }
